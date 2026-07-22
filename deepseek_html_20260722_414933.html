@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H&H 2026 Empowerment Week · Schedule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #a78bfa;
+            --primary-dark: #5b21b6;
+            --primary-glow: rgba(124, 58, 237, 0.25);
+            --bg-start: #f5f3ff;
+            --bg-end: #ede9fe;
+            --card-bg: rgba(255, 255, 255, 0.78);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --text-dark: #1e1b4b;
+            --text-muted: #4b5563;
+            --text-en: #6b7280;
+            --shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+            --radius: 24px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background: #0b0719;
+        }
+
+        /* ===== 背景主视觉（不变） ===== */
+        .kv-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(135deg,
+                    #0b1a33 0%,
+                    #1a2a5e 20%,
+                    #3d2a6b 40%,
+                    #6b2f6b 55%,
+                    #9e3a6b 70%,
+                    #c4546a 85%,
+                    #d97a6a 100%);
+            pointer-events: none;
+        }
+        .cloud-wash {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            mix-blend-mode: screen;
+        }
+        .cw-1 {
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(168, 85, 247, 0.5), transparent 70%);
+            top: 5%;
+            left: -10%;
+            animation: driftCloud 28s ease-in-out infinite alternate;
+        }
+        .cw-2 {
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(236, 72, 153, 0.45), transparent 70%);
+            bottom: 10%;
+            right: -15%;
+            animation: driftCloud 32s ease-in-out infinite alternate-reverse;
+        }
+        .cw-3 {
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.35), transparent 70%);
+            top: 40%;
+            left: 40%;
+            animation: driftCloud 24s ease-in-out infinite alternate;
+        }
+        .cw-4 {
+            width: 600px;
+            height: 350px;
+            background: radial-gradient(ellipse, rgba(236, 72, 153, 0.3), rgba(168, 85, 247, 0.2), transparent 70%);
+            top: 60%;
+            left: 20%;
+            animation: driftCloud 30s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes driftCloud {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, -40px) scale(1.2); }
+        }
+
+        .road-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            perspective: 800px;
+            perspective-origin: 50% 100%;
+        }
+        .road-surface {
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(180deg,
+                    transparent 0%,
+                    rgba(11, 7, 25, 0.3) 30%,
+                    rgba(11, 7, 25, 0.6) 70%,
+                    rgba(11, 7, 25, 0.9) 100%);
+            transform: rotateX(12deg) scaleY(1.2);
+            transform-origin: bottom center;
+            border-radius: 0 0 50% 50% / 0 0 30% 30%;
+            box-shadow: 0 -60px 120px rgba(124, 58, 237, 0.08);
+        }
+        .track-line {
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            width: 2px;
+            transform-origin: bottom center;
+            transform: rotateX(12deg) scaleY(1.4);
+            opacity: 0.6;
+            border-radius: 2px;
+        }
+        .track-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 60%;
+            background: inherit;
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+        .track-blue {
+            left: 15%;
+            background: linear-gradient(to top, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0.1));
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            animation: trackPulseBlue 3s ease-in-out infinite alternate;
+        }
+        .track-blue-2 {
+            left: 22%;
+            background: linear-gradient(to top, rgba(56, 189, 248, 0.6), rgba(56, 189, 248, 0.05));
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+            animation: trackPulseBlue 4s ease-in-out infinite alternate-reverse;
+        }
+        .track-blue-3 {
+            left: 8%;
+            background: linear-gradient(to top, rgba(56, 189, 248, 0.4), transparent);
+            animation: trackPulseBlue 3.5s ease-in-out infinite alternate;
+        }
+        .track-orange {
+            right: 15%;
+            background: linear-gradient(to top, rgba(251, 146, 60, 0.9), rgba(251, 146, 60, 0.1));
+            box-shadow: 0 0 30px rgba(251, 146, 60, 0.3);
+            animation: trackPulseOrange 3.2s ease-in-out infinite alternate;
+        }
+        .track-orange-2 {
+            right: 22%;
+            background: linear-gradient(to top, rgba(251, 146, 60, 0.6), rgba(251, 146, 60, 0.05));
+            box-shadow: 0 0 20px rgba(251, 146, 60, 0.15);
+            animation: trackPulseOrange 4.2s ease-in-out infinite alternate-reverse;
+        }
+        .track-orange-3 {
+            right: 8%;
+            background: linear-gradient(to top, rgba(251, 146, 60, 0.4), transparent);
+            animation: trackPulseOrange 3.8s ease-in-out infinite alternate;
+        }
+        @keyframes trackPulseBlue {
+            0% { opacity: 0.4; filter: brightness(0.8); }
+            100% { opacity: 0.9; filter: brightness(1.4); }
+        }
+        @keyframes trackPulseOrange {
+            0% { opacity: 0.4; filter: brightness(0.8); }
+            100% { opacity: 0.9; filter: brightness(1.4); }
+        }
+
+        .flow-line {
+            position: absolute;
+            bottom: 0;
+            height: 80%;
+            border-radius: 4px;
+            transform-origin: bottom center;
+            transform: rotateX(12deg) scaleY(1.3);
+            filter: blur(6px);
+            opacity: 0.35;
+        }
+        .flow-blue {
+            left: 18%;
+            width: 8px;
+            background: linear-gradient(to top, #38bdf8, rgba(56, 189, 248, 0.2));
+            animation: flowMoveBlue 4s ease-in-out infinite alternate;
+        }
+        .flow-orange {
+            right: 18%;
+            width: 8px;
+            background: linear-gradient(to top, #fb923c, rgba(251, 146, 60, 0.2));
+            animation: flowMoveOrange 4s ease-in-out infinite alternate;
+        }
+        @keyframes flowMoveBlue {
+            0% { transform: rotateX(12deg) scaleY(1.3) translateX(-20px); opacity: 0.2; }
+            100% { transform: rotateX(12deg) scaleY(1.5) translateX(20px); opacity: 0.5; }
+        }
+        @keyframes flowMoveOrange {
+            0% { transform: rotateX(12deg) scaleY(1.3) translateX(20px); opacity: 0.2; }
+            100% { transform: rotateX(12deg) scaleY(1.5) translateX(-20px); opacity: 0.5; }
+        }
+
+        .particle-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            perspective: 600px;
+        }
+        .particle-track {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            animation: particleFly linear infinite;
+            opacity: 0;
+        }
+        .particle-track.blue { background: #38bdf8; box-shadow: 0 0 16px rgba(56, 189, 248, 0.8); }
+        .particle-track.orange { background: #fb923c; box-shadow: 0 0 16px rgba(251, 146, 60, 0.8); }
+        .particle-track.pink { background: #f472b6; box-shadow: 0 0 16px rgba(244, 114, 182, 0.8); }
+        .particle-track.purple { background: #a78bfa; box-shadow: 0 0 16px rgba(167, 139, 250, 0.8); }
+        .particle-track.white { background: #ffffff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+        @keyframes particleFly {
+            0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-600px) translateX(var(--drift)) scale(1.2); opacity: 0; }
+        }
+
+        .bokeh {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.15;
+            mix-blend-mode: screen;
+        }
+        .bokeh-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%);
+            top: 15%;
+            left: 10%;
+            animation: floatBokeh 20s ease-in-out infinite alternate;
+        }
+        .bokeh-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(251, 146, 60, 0.25), transparent 70%);
+            bottom: 20%;
+            right: 5%;
+            animation: floatBokeh 25s ease-in-out infinite alternate-reverse;
+        }
+        .bokeh-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.2), transparent 70%);
+            top: 50%;
+            left: 50%;
+            animation: floatBokeh 18s ease-in-out infinite alternate;
+        }
+        .bokeh-4 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.2), transparent 70%);
+            top: 30%;
+            right: 20%;
+            animation: floatBokeh 22s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes floatBokeh {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, -40px) scale(1.3); }
+        }
+
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: #ffffff;
+            animation: twinkleStar var(--duration) ease-in-out infinite alternate;
+        }
+        @keyframes twinkleStar {
+            0% { opacity: 0.2; transform: scale(0.6); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .horizon-glow {
+            position: fixed;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 35%;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center bottom,
+                    rgba(251, 146, 60, 0.25) 0%,
+                    rgba(251, 146, 60, 0.08) 40%,
+                    transparent 70%);
+            filter: blur(40px);
+            border-radius: 50%;
+        }
+
+        /* ===== 内容层 ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            background: rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(20px) saturate(1.2);
+            padding: 1rem 2.2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .logo h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(167, 139, 250, 0.2);
+        }
+        .logo small {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            -webkit-text-fill-color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.3px;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .nav-tabs button {
+            padding: 0.6rem 1.8rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .nav-tabs button:hover {
+            background: rgba(167, 139, 250, 0.25);
+            color: #fff;
+            border-color: rgba(167, 139, 250, 0.3);
+        }
+        .nav-tabs button.active {
+            background: rgba(124, 58, 237, 0.5);
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.3);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .day-panel {
+            display: none;
+            animation: fadeInUp 0.6s ease;
+        }
+        .day-panel.active { display: block; }
+
+        .venue-block {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px) saturate(1.1);
+            border-radius: var(--radius);
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .venue-block:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 56px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 场地标题（可点击链接） */
+        .venue-title-wrap {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(91, 33, 182, 0.6));
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .venue-title-wrap a {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: opacity 0.2s;
+        }
+        .venue-title-wrap a:hover {
+            opacity: 0.85;
+            text-decoration: underline;
+        }
+        .venue-title-wrap a .map-icon {
+            font-size: 1.2rem;
+        }
+
+        .session-option {
+            width: 92%;
+            margin: 0 auto 0.6rem auto;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .session-option:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .session-wrapper {
+            display: flex;
+            gap: 16px;
+            align-items: stretch;
+        }
+        .session-time-column {
+            flex: 0 0 120px;
+            font-weight: 700;
+            color: rgba(167, 139, 250, 0.9);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            padding: 4px 0;
+        }
+        .session-speaker-column {
+            flex: 0 0 160px;
+            font-weight: 500;
+            color: rgba(244, 114, 182, 0.85);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            padding: 4px 0;
+            letter-spacing: 0.3px;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            padding-left: 12px;
+            flex-wrap: wrap;
+            line-height: 1.4;
+        }
+        .session-speaker-column .speaker-name {
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .session-speaker-column .speaker-sep {
+            color: rgba(255, 255, 255, 0.2);
+            margin: 0 2px;
+        }
+        .session-info-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 4px 0;
+            justify-content: center;
+            padding-left: 12px;
+        }
+        .session-name {
+            font-weight: 600;
+            font-size: 1.0rem;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.4;
+        }
+        .session-name-en {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .session-option.full-day .session-wrapper {
+            background: rgba(167, 139, 250, 0.08);
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            margin: 0 -0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* ===== 页脚 ===== */
+        footer {
+            margin-top: 3.5rem;
+            padding: 1.8rem 0 1.2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), rgba(244, 114, 182, 0.3), transparent);
+            opacity: 0.8;
+        }
+        .footer-primary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.5px;
+        }
+        .footer-brand .brand-icon {
+            font-size: 1rem;
+            color: rgba(167, 139, 250, 0.6);
+        }
+        .footer-brand .brand-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, 0.5);
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        .footer-highlight {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing: 0.8px;
+        }
+        .footer-highlight .hl-time {
+            color: rgba(167, 139, 250, 0.8);
+            font-weight: 500;
+        }
+        .footer-highlight .hl-sep {
+            color: rgba(255, 255, 255, 0.15);
+            margin: 0 0.4rem;
+        }
+        .footer-highlight .hl-location {
+            color: rgba(244, 114, 182, 0.7);
+            font-weight: 500;
+        }
+        .footer-mini-lines {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+        }
+        .footer-mini-lines span {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, 0.15);
+        }
+        .footer-mini-lines span:nth-child(2) { opacity: 0.35; }
+        .footer-mini-lines span:nth-child(3) { opacity: 0.55; }
+        .footer-mini-lines span:nth-child(4) { opacity: 0.35; }
+        .footer-mini-lines span:nth-child(5) { opacity: 0.15; }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+                padding: 1rem 1.2rem;
+            }
+            .nav-tabs { justify-content: center; }
+            .nav-tabs button { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+            .session-option { width: 100%; }
+            .session-wrapper { flex-direction: column; gap: 2px; }
+            .session-time-column { flex: unset; font-size: 0.8rem; padding-bottom: 0; }
+            .session-speaker-column {
+                flex: unset;
+                font-size: 0.8rem;
+                border-left: none;
+                padding-left: 0;
+                padding-top: 0;
+                width: 100%;
+            }
+            .session-info-column { padding-left: 0; }
+            .session-name { font-size: 0.9rem; }
+            .session-name-en { font-size: 0.7rem; }
+            .venue-block { padding: 1.2rem 1rem; }
+            .road-wrapper { height: 40%; }
+            .track-line { display: none; }
+            .flow-line { display: none; }
+            .particle-container { height: 40%; }
+            .footer-highlight { font-size: 0.75rem; letter-spacing: 0.4px; }
+            .footer-brand { font-size: 0.8rem; }
+            .venue-title-wrap a { font-size: 1rem; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 背景层 ===== -->
+    <div class="kv-sky"></div>
+    <div class="cloud-wash cw-1"></div>
+    <div class="cloud-wash cw-2"></div>
+    <div class="cloud-wash cw-3"></div>
+    <div class="cloud-wash cw-4"></div>
+    <div class="horizon-glow"></div>
+    <div class="road-wrapper">
+        <div class="road-surface"></div>
+        <div class="track-line track-blue"></div>
+        <div class="track-line track-blue-2"></div>
+        <div class="track-line track-blue-3"></div>
+        <div class="flow-line flow-blue"></div>
+        <div class="track-line track-orange"></div>
+        <div class="track-line track-orange-2"></div>
+        <div class="track-line track-orange-3"></div>
+        <div class="flow-line flow-orange"></div>
+    </div>
+    <div class="particle-container" id="particleContainer"></div>
+    <div class="bokeh bokeh-1"></div>
+    <div class="bokeh bokeh-2"></div>
+    <div class="bokeh bokeh-3"></div>
+    <div class="bokeh bokeh-4"></div>
+    <div class="star-field" id="starField"></div>
+
+    <!-- ===== 内容层 ===== -->
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>⚡ H&H 2026 Empowerment Week</h1>
+                <small>Schedule · July 27 – 31, 2026</small>
+            </div>
+            <div class="nav-tabs" id="navTabs"></div>
+        </header>
+
+        <!-- 日程数据 — 含场地链接 -->
+        <script>
+            const scheduleData = [{
+                dayLabel: 'Mon, Jul 27',
+                panelId: 'day0',
+                venues: [{
+                    name: 'Office',
+                    url: 'https://j.map.baidu.com/f7/x0HJ',
+                    sessions: [
+                        { time: '09:00 – 10:00', cn: '董事长赠礼',
+                            en: "Chairman's Gift", speaker: 'All staff', fullDay: true }
+                    ]
+                }]
+            }, {
+                dayLabel: 'Thu, Jul 30',
+                panelId: 'day1',
+                venues: [{
+                    name: 'Ballroom',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '09:00 – 12:00', cn: '董事长会议',
+                            en: "Chairman's Meeting", speaker: 'All staff', fullDay: true },
+                        { time: '14:00 – 14:30', cn: '开幕致辞与启动仪式',
+                            en: 'Opening Ceremony & Kick-off', speaker: 'All staff', fullDay: true },
+                        { time: '19:00 – 21:00', cn: '员工晚宴', en: 'Employee Banquet',
+                            speaker: 'All staff', fullDay: true }
+                    ]
+                }, {
+                    name: 'Conference Room 1',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '14:30 – 15:30', cn: '辩论赛: AI 到底是在成就新人，还是在废掉新人？',
+                            en: 'Debate: Is AI Empowering Newcomers or Holding Them Back?', speaker: '—' },
+                        { time: '15:50 – 16:50', cn: '辩论赛: 组织管理的终极命题：系统至上，还是人才至上？',
+                            en: 'Debate: The Ultimate Dilemma – System First or Talent First?', speaker: '—' },
+                        { time: '17:10 – 18:10', cn: 'MCP 集成技术交流与 Azure 集成实施中 TA 的工作',
+                            en: 'MCP Integration & Azure Implementation – TA Best Practices',
+                            speaker: 'Byron & Len' }
+                    ]
+                }, {
+                    name: 'Conference Room 2',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '14:30 – 15:30', cn: '圆桌探讨: 初次转战大型项目的阵痛与蜕变',
+                            en: 'Panel: Growing Pains & Breakthroughs in First Large-Scale Projects',
+                            speaker: 'Mina · Cooper · Ina · Toby' },
+                        { time: '15:50 – 16:50', cn: '圆桌探讨: 会说话，更会办事——职场沟通的实战进阶课',
+                            en: 'Panel: Mastering Workplace Communication & Career Growth',
+                            speaker: 'Daisy · Tiffany · Vera · Tia' },
+                        { time: '17:10 – 18:10', cn: '圆桌探讨: 深耕 BC 模块：新能力研发实施实战课堂',
+                            en: 'Panel: Deep Dive into BC Module – New Capability R&D',
+                            speaker: 'Eric · Mandy · Curry' }
+                    ]
+                }, {
+                    name: 'Board Room',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '14:30 – 15:30', cn: 'Consultinghantech——税务实施经验分享',
+                            en: 'Consultinghantech – Tax Implementation Experience Sharing',
+                            speaker: 'Kristen' },
+                        { time: '15:50 – 16:50', cn: '从“研磨”到“回甘”：我与星巴克咖啡豆的 D365 特调之旅',
+                            en: 'From "Grind" to "Sweetness": My D365 Journey with Starbucks Coffee',
+                            speaker: 'Adrian' },
+                        { time: '17:10 – 18:10', cn: '工程化之路：SGS 代码迁移、ISV 迭代与 DevOps 体系搭建实践',
+                            en: 'Engineering Path: SGS Code Migration, ISV Iteration & DevOps',
+                            speaker: 'Micky' }
+                    ]
+                }]
+            }, {
+                dayLabel: 'Fri, Jul 31',
+                panelId: 'day2',
+                venues: [{
+                    name: 'Ballroom',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '09:00 – 11:00', cn: '公司战略 Keynote',
+                            en: 'Company Strategy Keynote', speaker: 'PMO', fullDay: true },
+                        { time: '17:30 – 18:00', cn: '总结回顾与闭幕仪式',
+                            en: 'Closing Ceremony & Wrap-up', speaker: 'All staff', fullDay: true }
+                    ]
+                }, {
+                    name: 'Conference Room 1',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '11:00 – 12:00', cn: '从 F&O 到 Power Apps Canvas 集成实战中的痛点突破与代码复盘',
+                            en: 'F&O to Power Apps Canvas – Integration Insights & Code Review',
+                            speaker: 'Yana' },
+                        { time: '13:30 – 14:00', cn: 'Dynamics CE 核心技术解密：通用解决方案与实战演练',
+                            en: 'Dynamics CE Core Tech: Universal Solutions & Live Demo',
+                            speaker: 'William' },
+                        { time: '14:00 – 14:30', cn: 'Tiffany 的个人分享',
+                            en: "Tiffany's Personal Sharing", speaker: 'Tiffany' },
+                        { time: '14:50 – 15:50', cn: '车商悦全链路价值落地',
+                            en: 'CheShangYue Full-Chain Value Realization', speaker: 'Rocco' },
+                        { time: '16:10 – 17:10', cn: '不写代码的日子——25年技术人的转身与破局',
+                            en: 'Life Without Code – A 25-Year Tech Veteran\'s Pivot',
+                            speaker: 'Angelo' }
+                    ]
+                }, {
+                    name: 'Conference Room 2',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '11:00 – 12:00', cn: '从 Copilot 到 Development Agent：基于 GitHub Copilot CLI 构建 D365 智能开发工作流',
+                            en: 'Copilot to Development Agent: D365 Workflow with GitHub Copilot CLI',
+                            speaker: 'Willie' },
+                        { time: '13:30 – 14:30', cn: '圆桌探讨: 同一套系统，不同的战场——我们眼中的太太乐项目',
+                            en: 'Panel: Same System, Different Battlefields – Our TaitaiLe Project',
+                            speaker: 'Gage · Iris · Adrian · Tia · Marco' },
+                        { time: '14:50 – 15:50', cn: '研发效能双引擎：CopilotToGo 智能应用与 Playwright 自动化回归测试',
+                            en: 'R&D Efficiency Engines: CopilotToGo & Playwright Automation',
+                            speaker: 'Ethan & Curry' },
+                        { time: '16:10 – 17:10', cn: 'AI 赋能销售与售前闭环',
+                            en: 'AI Empowering Sales & Pre-Sales Closed-Loop',
+                            speaker: 'Mark' }
+                    ]
+                }, {
+                    name: 'Board Room',
+                    url: 'https://j.map.baidu.com/b1/rQCc',
+                    sessions: [
+                        { time: '11:00 – 17:00', cn: 'AI Workshop',
+                            en: 'AI Workshop',
+                            speaker: 'Alex & James & Joy & Jun', fullDay: true }
+                    ]
+                }]
+            }];
+        </script>
+
+        <div id="scheduleContainer"></div>
+
+        <footer>
+            <div class="footer-primary">
+                <div class="footer-brand">
+                    <span class="brand-icon">✦</span>
+                    <span>H&H 2026 Empowerment Week</span>
+                    <span class="brand-dot"></span>
+                </div>
+                <div class="footer-highlight">
+                    <span class="hl-time">July 27 – 31, 2026</span>
+                    <span class="hl-sep">·</span>
+                    <span class="hl-location">Xi'an</span>
+                </div>
+            </div>
+            <div class="footer-mini-lines">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // 星光粒子
+            const starField = document.getElementById('starField');
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2.5 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 70 + '%';
+                star.style.setProperty('--duration', (Math.random() * 4 + 2) + 's');
+                star.style.animationDelay = (Math.random() * 5) + 's';
+                starField.appendChild(star);
+            }
+
+            // 光轨粒子
+            const particleContainer = document.getElementById('particleContainer');
+            const colors = ['blue', 'orange', 'pink', 'purple', 'white'];
+            for (let i = 0; i < 80; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle-track ' + colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 4 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = (Math.random() * 60 + 20) + '%';
+                p.style.bottom = (Math.random() * 20) + '%';
+                p.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
+                p.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                p.style.animationDelay = (Math.random() * 6) + 's';
+                particleContainer.appendChild(p);
+            }
+
+            // 导航标签
+            const navTabs = document.getElementById('navTabs');
+            scheduleData.forEach((day, index) => {
+                const btn = document.createElement('button');
+                btn.textContent = day.dayLabel;
+                btn.dataset.day = index;
+                if (index === 0) btn.classList.add('active');
+                btn.addEventListener('click', function() {
+                    switchDay(index);
+                });
+                navTabs.appendChild(btn);
+            });
+
+            // 渲染日程
+            const container = document.getElementById('scheduleContainer');
+
+            function renderSchedule() {
+                container.innerHTML = '';
+                scheduleData.forEach((day, dayIndex) => {
+                    const panel = document.createElement('div');
+                    panel.className = 'day-panel' + (dayIndex === 0 ? ' active' : '');
+                    panel.id = day.panelId;
+
+                    day.venues.forEach(venue => {
+                        const block = document.createElement('div');
+                        block.className = 'venue-block';
+
+                        // 场地标题 — 可点击链接 + 地图图标
+                        const titleWrap = document.createElement('div');
+                        titleWrap.className = 'venue-title-wrap';
+                        const link = document.createElement('a');
+                        link.href = venue.url;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.innerHTML = '📍 ' + venue.name + ' <span class="map-icon">🗺️</span>';
+                        titleWrap.appendChild(link);
+                        block.appendChild(titleWrap);
+
+                        venue.sessions.forEach(session => {
+                            const option = document.createElement('div');
+                            option.className = 'session-option' + (session.fullDay ? ' full-day' : '');
+
+                            const wrapper = document.createElement('div');
+                            wrapper.className = 'session-wrapper';
+
+                            // 时间列
+                            const timeCol = document.createElement('div');
+                            timeCol.className = 'session-time-column';
+                            timeCol.textContent = session.time;
+                            wrapper.appendChild(timeCol);
+
+                            // 讲师列
+                            const speakerCol = document.createElement('div');
+                            speakerCol.className = 'session-speaker-column';
+                            if (session.speaker && session.speaker.includes('·')) {
+                                const names = session.speaker.split('·').map(s => s.trim());
+                                names.forEach((name, idx) => {
+                                    const span = document.createElement('span');
+                                    span.className = 'speaker-name';
+                                    span.textContent = name;
+                                    speakerCol.appendChild(span);
+                                    if (idx < names.length - 1) {
+                                        const sep = document.createElement('span');
+                                        sep.className = 'speaker-sep';
+                                        sep.textContent = ' · ';
+                                        speakerCol.appendChild(sep);
+                                    }
+                                });
+                            } else {
+                                speakerCol.textContent = session.speaker || '—';
+                            }
+                            wrapper.appendChild(speakerCol);
+
+                            // 标题列
+                            const infoCol = document.createElement('div');
+                            infoCol.className = 'session-info-column';
+
+                            const nameDiv = document.createElement('div');
+                            nameDiv.className = 'session-name';
+                            nameDiv.textContent = session.cn;
+                            infoCol.appendChild(nameDiv);
+
+                            const enDiv = document.createElement('div');
+                            enDiv.className = 'session-name-en';
+                            enDiv.textContent = session.en;
+                            infoCol.appendChild(enDiv);
+
+                            wrapper.appendChild(infoCol);
+                            option.appendChild(wrapper);
+                            block.appendChild(option);
+                        });
+
+                        panel.appendChild(block);
+                    });
+
+                    container.appendChild(panel);
+                });
+            }
+            renderSchedule();
+
+            // 切换逻辑
+            const panels = {};
+            scheduleData.forEach((day, index) => {
+                panels[index] = document.getElementById(day.panelId);
+            });
+
+            function switchDay(index) {
+                const buttons = document.querySelectorAll('.nav-tabs button');
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === index);
+                });
+                Object.keys(panels).forEach(key => {
+                    panels[key].classList.toggle('active', parseInt(key) === index);
+                });
+            }
+            window.switchDay = switchDay;
+        })();
+    </script>
+</body>
+</html>
