@@ -35,7 +35,7 @@
             background: #0b0719;
         }
 
-        /* ===== 背景主视觉（不变） ===== */
+        /* ===== 背景主视觉 ===== */
         .kv-sky {
             position: fixed;
             top: 0;
@@ -61,6 +61,7 @@
             filter: blur(80px);
             opacity: 0.5;
             mix-blend-mode: screen;
+            will-change: transform;
         }
         .cw-1 {
             width: 700px;
@@ -223,39 +224,6 @@
             100% { transform: rotateX(12deg) scaleY(1.5) translateX(-20px); opacity: 0.5; }
         }
 
-        .particle-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            perspective: 600px;
-        }
-        .particle-track {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #ffffff;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-            animation: particleFly linear infinite;
-            opacity: 0;
-        }
-        .particle-track.blue { background: #38bdf8; box-shadow: 0 0 16px rgba(56, 189, 248, 0.8); }
-        .particle-track.orange { background: #fb923c; box-shadow: 0 0 16px rgba(251, 146, 60, 0.8); }
-        .particle-track.pink { background: #f472b6; box-shadow: 0 0 16px rgba(244, 114, 182, 0.8); }
-        .particle-track.purple { background: #a78bfa; box-shadow: 0 0 16px rgba(167, 139, 250, 0.8); }
-        .particle-track.white { background: #ffffff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
-        @keyframes particleFly {
-            0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-600px) translateX(var(--drift)) scale(1.2); opacity: 0; }
-        }
-
         .bokeh {
             position: fixed;
             z-index: 0;
@@ -266,35 +234,27 @@
             mix-blend-mode: screen;
         }
         .bokeh-1 {
-            width: 300px;
-            height: 300px;
+            width: 300px; height: 300px;
             background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%);
-            top: 15%;
-            left: 10%;
+            top: 15%; left: 10%;
             animation: floatBokeh 20s ease-in-out infinite alternate;
         }
         .bokeh-2 {
-            width: 400px;
-            height: 400px;
+            width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(251, 146, 60, 0.25), transparent 70%);
-            bottom: 20%;
-            right: 5%;
+            bottom: 20%; right: 5%;
             animation: floatBokeh 25s ease-in-out infinite alternate-reverse;
         }
         .bokeh-3 {
-            width: 200px;
-            height: 200px;
+            width: 200px; height: 200px;
             background: radial-gradient(circle, rgba(244, 114, 182, 0.2), transparent 70%);
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             animation: floatBokeh 18s ease-in-out infinite alternate;
         }
         .bokeh-4 {
-            width: 250px;
-            height: 250px;
+            width: 250px; height: 250px;
             background: radial-gradient(circle, rgba(167, 139, 250, 0.2), transparent 70%);
-            top: 30%;
-            right: 20%;
+            top: 30%; right: 20%;
             animation: floatBokeh 22s ease-in-out infinite alternate-reverse;
         }
         @keyframes floatBokeh {
@@ -302,36 +262,12 @@
             100% { transform: translate(60px, -40px) scale(1.3); }
         }
 
-        .star-field {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            background: #ffffff;
-            animation: twinkleStar var(--duration) ease-in-out infinite alternate;
-        }
-        @keyframes twinkleStar {
-            0% { opacity: 0.2; transform: scale(0.6); }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
-
         .horizon-glow {
             position: fixed;
-            bottom: 30%;
-            left: 50%;
+            bottom: 30%; left: 50%;
             transform: translateX(-50%);
-            width: 80%;
-            height: 35%;
-            z-index: 0;
-            pointer-events: none;
+            width: 80%; height: 35%;
+            z-index: 0; pointer-events: none;
             background: radial-gradient(ellipse at center bottom,
                     rgba(251, 146, 60, 0.25) 0%,
                     rgba(251, 146, 60, 0.08) 40%,
@@ -354,15 +290,17 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 1.2rem;
             margin-bottom: 2.5rem;
-            background: rgba(255, 255, 255, 0.20);
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px) saturate(1.2);
             padding: 1rem 2.2rem;
             border-radius: var(--radius);
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .logo h1 {
+
+        .logo-text h1 {
             font-size: 1.7rem;
             font-weight: 700;
             background: linear-gradient(to right, #a78bfa, #f472b6);
@@ -370,13 +308,14 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 40px rgba(167, 139, 250, 0.2);
         }
-        .logo small {
+        .logo-text small {
             display: block;
             font-size: 0.75rem;
             color: rgba(255, 255, 255, 0.7);
             -webkit-text-fill-color: rgba(255, 255, 255, 0.7);
             letter-spacing: 0.3px;
         }
+
         .nav-tabs {
             display: flex;
             gap: 0.6rem;
@@ -399,6 +338,9 @@
             background: rgba(167, 139, 250, 0.25);
             color: #fff;
             border-color: rgba(167, 139, 250, 0.3);
+        }
+        .nav-tabs button:active {
+            transform: scale(0.96);
         }
         .nav-tabs button.active {
             background: rgba(124, 58, 237, 0.5);
@@ -428,7 +370,6 @@
             box-shadow: 0 16px 56px rgba(0, 0, 0, 0.3);
         }
 
-        /* 场地标题（可点击链接） */
         .venue-title-wrap {
             text-align: center;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(91, 33, 182, 0.6));
@@ -536,10 +477,10 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        /* ===== 页脚 ===== */
+        /* ===== 页脚与 Logo 组 ===== */
         footer {
             margin-top: 3.5rem;
-            padding: 1.8rem 0 1.2rem;
+            padding: 2.2rem 0 1.5rem;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             position: relative;
@@ -547,10 +488,8 @@
         footer::before {
             content: '';
             position: absolute;
-            top: -1px;
-            left: 15%;
-            width: 70%;
-            height: 2px;
+            top: -1px; left: 15%;
+            width: 70%; height: 2px;
             background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), rgba(244, 114, 182, 0.3), transparent);
             opacity: 0.8;
         }
@@ -558,7 +497,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.4rem;
+            gap: 1.2rem;
         }
         .footer-brand {
             display: inline-flex;
@@ -575,8 +514,7 @@
         }
         .footer-brand .brand-dot {
             display: inline-block;
-            width: 5px;
-            height: 5px;
+            width: 5px; height: 5px;
             border-radius: 50%;
             background: rgba(167, 139, 250, 0.5);
             animation: pulseDot 2s ease-in-out infinite;
@@ -585,6 +523,41 @@
             0%, 100% { opacity: 0.2; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.3); }
         }
+
+        /* 页脚底部的图片 Logo 卡片组 */
+        .footer-logo-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            /* 透亮的暗色微光衬底，兼容各类 Logo 显示 */
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 10px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            margin: 0.2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.25s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.08);
+        }
+
+        .logo-divider {
+            width: 1px;
+            height: 22px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .footer-highlight {
             font-size: 0.85rem;
             font-weight: 400;
@@ -607,12 +580,11 @@
             display: flex;
             justify-content: center;
             gap: 0.4rem;
-            margin-top: 0.6rem;
+            margin-top: 0.8rem;
         }
         .footer-mini-lines span {
             display: inline-block;
-            width: 4px;
-            height: 4px;
+            width: 4px; height: 4px;
             border-radius: 50%;
             background: rgba(167, 139, 250, 0.15);
         }
@@ -627,6 +599,9 @@
                 align-items: stretch;
                 gap: 1rem;
                 padding: 1rem 1.2rem;
+            }
+            .logo-text h1 {
+                font-size: 1.3rem;
             }
             .nav-tabs { justify-content: center; }
             .nav-tabs button { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
@@ -648,10 +623,11 @@
             .road-wrapper { height: 40%; }
             .track-line { display: none; }
             .flow-line { display: none; }
-            .particle-container { height: 40%; }
             .footer-highlight { font-size: 0.75rem; letter-spacing: 0.4px; }
             .footer-brand { font-size: 0.8rem; }
             .venue-title-wrap a { font-size: 1rem; }
+            .footer-logo-group { padding: 8px 16px; gap: 0.8rem; }
+            .logo-img { height: 30px; }
         }
 
         @keyframes fadeInUp {
@@ -680,24 +656,26 @@
         <div class="track-line track-orange-3"></div>
         <div class="flow-line flow-orange"></div>
     </div>
-    <div class="particle-container" id="particleContainer"></div>
+    
+    <!-- 高性能 Canvas 粒子供给 -->
+    <canvas id="canvas-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+
     <div class="bokeh bokeh-1"></div>
     <div class="bokeh bokeh-2"></div>
     <div class="bokeh bokeh-3"></div>
     <div class="bokeh bokeh-4"></div>
-    <div class="star-field" id="starField"></div>
 
     <!-- ===== 内容层 ===== -->
     <div class="container">
         <header>
-            <div class="logo">
+            <div class="logo-text">
                 <h1>⚡ H&H 2026 Empowerment Week</h1>
                 <small>Schedule · July 27 – 31, 2026</small>
             </div>
-            <div class="nav-tabs" id="navTabs"></div>
+            <nav class="nav-tabs" id="navTabs"></nav>
         </header>
 
-        <!-- 日程数据 — 含场地链接 -->
+        <!-- 日程数据 -->
         <script>
             const scheduleData = [{
                 dayLabel: 'Mon, Jul 27',
@@ -824,7 +802,7 @@
             }];
         </script>
 
-        <div id="scheduleContainer"></div>
+        <main id="scheduleContainer"></main>
 
         <footer>
             <div class="footer-primary">
@@ -833,6 +811,16 @@
                     <span>H&H 2026 Empowerment Week</span>
                     <span class="brand-dot"></span>
                 </div>
+
+                <!-- 底部展示的图片 Logo 组合，替换 src 即可 -->
+                <div class="footer-logo-group">
+                    <img src="Sunrise Technologies.png" alt="Sunrise Technologies" class="logo-img" />
+                    <div class="logo-divider"></div>
+                    <img src="Hi-Win Tech.jpg" alt="Huamei Soft" class="logo-img" />
+                    <div class="logo-divider"></div>
+                    <img src="Huamei Soft.jpg" alt="Hi-Win Tech" class="logo-img" />
+                </div>
+
                 <div class="footer-highlight">
                     <span class="hl-time">July 27 – 31, 2026</span>
                     <span class="hl-sep">·</span>
@@ -847,39 +835,112 @@
 
     <script>
         (function() {
-            // 星光粒子
-            const starField = document.getElementById('starField');
-            for (let i = 0; i < 120; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = Math.random() * 2.5 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 70 + '%';
-                star.style.setProperty('--duration', (Math.random() * 4 + 2) + 's');
-                star.style.animationDelay = (Math.random() * 5) + 's';
-                starField.appendChild(star);
+            // ==========================================
+            // 1. Canvas 粒子与星空渲染引擎 (高性能版)
+            // ==========================================
+            const canvas = document.getElementById('canvas-bg');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // 星星数据
+            const stars = [];
+            const STAR_COUNT = 120;
+            for (let i = 0; i < STAR_COUNT; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height * 0.7,
+                    baseRadius: Math.random() * 1.5 + 0.5,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: (Math.random() * 0.03) + 0.01
+                });
             }
 
-            // 光轨粒子
-            const particleContainer = document.getElementById('particleContainer');
-            const colors = ['blue', 'orange', 'pink', 'purple', 'white'];
-            for (let i = 0; i < 80; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle-track ' + colors[Math.floor(Math.random() * colors.length)];
-                const size = Math.random() * 4 + 2;
-                p.style.width = size + 'px';
-                p.style.height = size + 'px';
-                p.style.left = (Math.random() * 60 + 20) + '%';
-                p.style.bottom = (Math.random() * 20) + '%';
-                p.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
-                p.style.animationDuration = (Math.random() * 4 + 3) + 's';
-                p.style.animationDelay = (Math.random() * 6) + 's';
-                particleContainer.appendChild(p);
+            // 粒子数据
+            const particles = [];
+            const PARTICLE_COUNT = 80;
+            const colors = [
+                { c: '#38bdf8', glow: 'rgba(56, 189, 248, 0.8)' },
+                { c: '#fb923c', glow: 'rgba(251, 146, 60, 0.8)' },
+                { c: '#f472b6', glow: 'rgba(244, 114, 182, 0.8)' },
+                { c: '#a78bfa', glow: 'rgba(167, 139, 250, 0.8)' },
+                { c: '#ffffff', glow: 'rgba(255, 255, 255, 0.5)' }
+            ];
+
+            function createParticle() {
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                return {
+                    startX: width * (0.2 + Math.random() * 0.6),
+                    startY: height * (0.8 + Math.random() * 0.2),
+                    x: 0, y: 0,
+                    drift: (Math.random() - 0.5) * 120,
+                    radius: Math.random() * 2 + 1,
+                    color: color.c,
+                    glow: color.glow,
+                    progress: Math.random(),
+                    speed: (Math.random() * 0.0025) + 0.0015
+                };
             }
 
-            // 导航标签
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                particles.push(createParticle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                // 绘制星空
+                ctx.shadowBlur = 0;
+                stars.forEach(star => {
+                    star.phase += star.speed;
+                    const alpha = 0.2 + (Math.sin(star.phase) + 1) / 2 * 0.8;
+                    const scale = 0.6 + (Math.sin(star.phase) + 1) / 2 * 0.6;
+                    
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.baseRadius * scale, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                    ctx.fill();
+                });
+
+                // 绘制光轨粒子
+                particles.forEach(p => {
+                    p.progress += p.speed;
+                    if (p.progress > 1) {
+                        Object.assign(p, createParticle());
+                        p.progress = 0;
+                    }
+
+                    p.x = p.startX + (p.drift * p.progress);
+                    p.y = p.startY - (600 * p.progress);
+
+                    const currentScale = 0.5 + (0.7 * p.progress);
+                    let alpha = 1;
+                    if (p.progress < 0.1) alpha = p.progress / 0.1;
+                    else if (p.progress > 0.9) alpha = (1 - p.progress) / 0.1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius * currentScale, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = p.glow;
+                    ctx.globalAlpha = alpha;
+                    ctx.fill();
+                });
+                
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // ==========================================
+            // 2. 导航与日程 DOM 渲染
+            // ==========================================
             const navTabs = document.getElementById('navTabs');
             scheduleData.forEach((day, index) => {
                 const btn = document.createElement('button');
@@ -892,7 +953,6 @@
                 navTabs.appendChild(btn);
             });
 
-            // 渲染日程
             const container = document.getElementById('scheduleContainer');
 
             function renderSchedule() {
@@ -906,7 +966,6 @@
                         const block = document.createElement('div');
                         block.className = 'venue-block';
 
-                        // 场地标题 — 可点击链接 + 地图图标
                         const titleWrap = document.createElement('div');
                         titleWrap.className = 'venue-title-wrap';
                         const link = document.createElement('a');
@@ -924,13 +983,11 @@
                             const wrapper = document.createElement('div');
                             wrapper.className = 'session-wrapper';
 
-                            // 时间列
                             const timeCol = document.createElement('div');
                             timeCol.className = 'session-time-column';
                             timeCol.textContent = session.time;
                             wrapper.appendChild(timeCol);
 
-                            // 讲师列
                             const speakerCol = document.createElement('div');
                             speakerCol.className = 'session-speaker-column';
                             if (session.speaker && session.speaker.includes('·')) {
@@ -952,7 +1009,6 @@
                             }
                             wrapper.appendChild(speakerCol);
 
-                            // 标题列
                             const infoCol = document.createElement('div');
                             infoCol.className = 'session-info-column';
 
@@ -979,7 +1035,6 @@
             }
             renderSchedule();
 
-            // 切换逻辑
             const panels = {};
             scheduleData.forEach((day, index) => {
                 panels[index] = document.getElementById(day.panelId);
