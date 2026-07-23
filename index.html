@@ -321,6 +321,7 @@
             margin-top: 2px;
         }
 
+        /* 导航选项卡 */
         .nav-tabs {
             display: flex;
             gap: 0.6rem;
@@ -484,7 +485,7 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        /* ===== 页脚 ===== */
+        /* ===== 页脚：与课程卡片同宽 ===== */
         footer {
             margin-top: 3.5rem;
             padding: 2.2rem 0 1.5rem;
@@ -500,12 +501,70 @@
             background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), rgba(244, 114, 182, 0.3), transparent);
             opacity: 0.8;
         }
+
         .footer-primary {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1.2rem;
         }
+
+        /* 参会须知卡片：宽度与上方的 venue-block 保持一致 (100%) */
+        .footer-notice-card {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px) saturate(1.1);
+            border-radius: var(--radius);
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .notice-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: rgba(244, 114, 182, 0.95);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 0.4rem;
+        }
+        .notice-section {
+            margin-bottom: 0.2rem;
+        }
+        .notice-sec-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: rgba(167, 139, 250, 0.95);
+            margin-bottom: 0.25rem;
+        }
+        .notice-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+        }
+        .notice-list li {
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 0.25rem;
+        }
+        .notice-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: rgba(244, 114, 182, 0.7);
+        }
+        .notice-hl {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .footer-brand {
             display: inline-flex;
             align-items: center;
@@ -514,6 +573,7 @@
             font-weight: 500;
             color: rgba(255, 255, 255, 0.55);
             letter-spacing: 0.5px;
+            margin-top: 0.4rem;
         }
         .footer-brand .brand-icon {
             font-size: 1rem;
@@ -529,6 +589,25 @@
         @keyframes pulseDot {
             0%, 100% { opacity: 0.2; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        .footer-highlight {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing: 0.8px;
+        }
+        .footer-highlight .hl-time {
+            color: rgba(167, 139, 250, 0.8);
+            font-weight: 500;
+        }
+        .footer-highlight .hl-sep {
+            color: rgba(255, 255, 255, 0.15);
+            margin: 0 0.4rem;
+        }
+        .footer-highlight .hl-location {
+            color: rgba(244, 114, 182, 0.7);
+            font-weight: 500;
         }
 
         .footer-logo-group {
@@ -564,24 +643,6 @@
             background: rgba(0, 0, 0, 0.18);
         }
 
-        .footer-highlight {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.45);
-            letter-spacing: 0.8px;
-        }
-        .footer-highlight .hl-time {
-            color: rgba(167, 139, 250, 0.8);
-            font-weight: 500;
-        }
-        .footer-highlight .hl-sep {
-            color: rgba(255, 255, 255, 0.15);
-            margin: 0 0.4rem;
-        }
-        .footer-highlight .hl-location {
-            color: rgba(244, 114, 182, 0.7);
-            font-weight: 500;
-        }
         .footer-mini-lines {
             display: flex;
             justify-content: center;
@@ -649,6 +710,8 @@
             .road-wrapper { height: 40%; }
             .track-line { display: none; }
             .flow-line { display: none; }
+            
+            .footer-notice-card { padding: 1.2rem 1rem; }
             .footer-highlight { font-size: 0.75rem; letter-spacing: 0.4px; }
             .footer-brand { font-size: 0.8rem; }
             .venue-title-wrap a { font-size: 1rem; }
@@ -715,7 +778,7 @@
                         { 
                             time: '09:00 – 10:00', 
                             cn: '董事长赠礼',
-                            en: "Chairman's Gift", 
+                            en: "Chairman Gift", 
                             speaker: 'All staff', 
                             fullDay: true 
                         },
@@ -724,7 +787,7 @@
                             cn: 'Business Review',
                             en: 'Business Review', 
                             speaker: 'Chairman · PMO · AI team',
-	            fullDay: true 
+                            fullDay: true 
                         }
                     ]
                 }]
@@ -736,9 +799,7 @@
                     url: 'https://j.map.baidu.com/b1/rQCc',
                     sessions: [
                         { time: '09:00 – 12:00', cn: '董事长会议',
-                            en: "Chairman's Meeting", speaker: 'All staff', fullDay: true },
-                        { time: '14:00 – 14:30', cn: '开幕致辞与启动仪式',
-                            en: 'Opening Ceremony & Kick-off', speaker: 'All staff', fullDay: true },
+                            en: "Chairman Meeting", speaker: 'All staff', fullDay: true },
                         { time: '19:00 – 21:00', cn: '员工晚宴', en: 'Employee Banquet',
                             speaker: 'All staff', fullDay: true }
                     ]
@@ -752,7 +813,7 @@
                             en: 'Debate: The Ultimate Dilemma – System First or Talent First?', speaker: '—' },
                         { time: '17:10 – 18:10', cn: 'MCP 集成技术交流与 Azure 集成实施中 TA 的工作',
                             en: 'MCP Integration & Azure Implementation – TA Best Practices',
-                            speaker: 'Byron & Len' }
+                            speaker: 'Byron · Len' }
                     ]
                 }, {
                     name: 'Conference Room 2',
@@ -825,7 +886,7 @@
                             speaker: 'Gage · Iris · Adrian · Tia · Marco' },
                         { time: '14:50 – 15:50', cn: '研发效能双引擎：CopilotToGo 智能应用与 Playwright 自动化回归测试',
                             en: 'R&D Efficiency Engines: CopilotToGo & Playwright Automation',
-                            speaker: 'Ethan & Curry' },
+                            speaker: 'Ethan · Curry' },
                         { time: '16:10 – 17:10', cn: 'AI 赋能销售与售前闭环',
                             en: 'AI Empowering Sales & Pre-Sales Closed-Loop',
                             speaker: 'Mark' }
@@ -834,9 +895,9 @@
                     name: 'Board Room',
                     url: 'https://j.map.baidu.com/b1/rQCc',
                     sessions: [
-                        { time: '11:00 – 17:00', cn: 'AI Workshop',
+                        { time: '11:00 – 17:10', cn: 'Code Less, Create More：玩转Agent提效工作坊',
                             en: 'AI Workshop',
-                            speaker: 'Alex · James · Joy · Jun', fullDay: true }
+                            speaker: 'Joy · James · Alex · Jun', fullDay: true }
                     ]
                 }]
             }];
@@ -846,27 +907,51 @@
 
         <footer>
             <div class="footer-primary">
+                <!-- 1. 参会须知 (全宽卡片，与课程框同长) -->
+                <div class="footer-notice-card">
+                    <div class="notice-title">📌 参会须知 (Notice)</div>
+                    
+                    <div class="notice-section">
+                        <div class="notice-sec-title">👔 形象与纪律要求</div>
+                        <ul class="notice-list">
+                            <li><span class="notice-hl">着装与铭牌</span>：7月30日–31日请统一穿着董事长赠送衬衫，并规范佩戴个人铭牌。</li>
+                            <li><span class="notice-hl">准时入场</span>：7月30日–31日请提前 <span class="notice-hl">30 分钟</span> 抵达会场。</li>
+                        </ul>
+                    </div>
+
+                    <div class="notice-section">
+                        <div class="notice-sec-title">✈️ 异地及项目组行程</div>
+                        <ul class="notice-list">
+                            <li>外地同事请于 <span class="notice-hl">7月30日前</span> 抵达西安（特殊报备须部门经理及总经理审批）。</li>
+                            <li>请提前提交标准出差申请，以便统一安排住宿。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. 品牌主标题 -->
                 <div class="footer-brand">
                     <span class="brand-icon">✦</span>
                     <span>H&H 2026 Empowerment Week</span>
                     <span class="brand-dot"></span>
                 </div>
 
-                <!-- 底部展示的图片 Logo 组合 -->
-                <div class="footer-logo-group">
-                    <img src="Sunrise Technologies.png" alt="Sunrise Technologies" class="logo-img" />
-                    <div class="logo-divider"></div>
-	    <img src="Huamei Soft.jpg" alt="Huamei Soft" class="logo-img" />
-                    <div class="logo-divider"></div>
-                    <img src="Hi-Win Tech.jpg" alt="Hi-Win Tech" class="logo-img" />
-                </div>
-
+                <!-- 3. 时间地点 -->
                 <div class="footer-highlight">
                     <span class="hl-time">July 27 – 31, 2026</span>
                     <span class="hl-sep">·</span>
                     <span class="hl-location">Xi'an</span>
                 </div>
+
+                <!-- 4. Logo 组合卡片 -->
+                <div class="footer-logo-group">
+                    <img src="Sunrise Technologies.png" alt="Sunrise Technologies" class="logo-img" />
+                    <div class="logo-divider"></div>
+                    <img src="Huamei Soft.jpg" alt="Huamei Soft" class="logo-img" />
+                    <div class="logo-divider"></div>
+                    <img src="Hi-Win Tech.jpg" alt="Hi-Win Tech" class="logo-img" />
+                </div>
             </div>
+
             <div class="footer-mini-lines">
                 <span></span><span></span><span></span><span></span><span></span>
             </div>
